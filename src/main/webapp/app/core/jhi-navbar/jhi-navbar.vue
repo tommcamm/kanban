@@ -24,13 +24,21 @@
             <span>Home</span>
           </span>
         </b-nav-item>
+
+        <b-nav-item to="/Kanban" v-if="authenticated" exact>
+          <span>
+            <font-awesome-icon icon="list" />
+            <span>Kanban</span>
+          </span>
+        </b-nav-item>
+
         <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="th-list" />
             <span class="no-bold">Entities</span>
           </span>
-          <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </b-nav-item-dropdown>
+
         <b-nav-item-dropdown
           right
           id="admin-menu"
