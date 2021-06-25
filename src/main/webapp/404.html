@@ -6,53 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="favicon.ico" />
     <style>
-      * {
-        line-height: 1.2;
-        margin: 0;
-      }
-
-      html {
-        color: #888;
-        display: table;
-        font-family: sans-serif;
-        height: 100%;
-        text-align: center;
-        width: 100%;
-      }
-
       body {
-        display: table-cell;
-        vertical-align: middle;
-        margin: 2em auto;
+        background-color: #15ab84;
+      }
+      .center-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
-      h1 {
-        color: #555;
-        font-size: 2em;
-        font-weight: 400;
+      .vertical-center {
+        margin: 0;
+        position: absolute;
+        top: 30%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
       }
 
-      p {
-        margin: 0 auto;
-        width: 280px;
-      }
-
-      @media only screen and (max-width: 280px) {
-        body,
-        p {
-          width: 95%;
-        }
-
-        h1 {
-          font-size: 1.5em;
-          margin: 0 0 0.3em;
-        }
+      .center-text {
+        text-align: center;
+        color: white;
+        font-family: 'Courier New', monospace;
       }
     </style>
   </head>
   <body>
-    <h1>Page Not Found</h1>
-    <p>Sorry, but the page you were trying to view does not exist.</p>
+    <div class="center-area">
+      <div class="vertical-center">
+        <img src="404.gif" alt="404 error" />
+        <div class="center-text">
+          <h1>Pagina non trovata</h1>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
 <!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->

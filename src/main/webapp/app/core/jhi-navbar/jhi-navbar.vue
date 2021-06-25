@@ -126,13 +126,18 @@
 /* ==========================================================================
     Navbar
     ========================================================================== */
+
+.jh-navbar-element {
+  color: white;
+}
+
 .navbar-version {
   font-size: 10px;
-  color: #ccc;
+  color: white;
 }
 
 .jh-navbar {
-  background-color: #353d47;
+  background-color: #15ab84;
   padding: 0.2em 1em;
 }
 
@@ -167,13 +172,13 @@
 }
 
 .jh-navbar .jh-navbar-toggler {
-  color: #ccc;
+  color: white;
   font-size: 1.5em;
   padding: 10px;
 }
 
 .jh-navbar .jh-navbar-toggler:hover {
-  color: #fff;
+  color: #ccc;
 }
 
 @media screen and (min-width: 768px) {
@@ -213,6 +218,5 @@
   background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
   background-size: contain;
   width: 100%;
-  filter: drop-shadow(0 0 0.05rem white);
 }
 </style>
