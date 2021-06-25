@@ -1,10 +1,10 @@
 ${AnsiColor.BRIGHT_RED} |  \  /  \ ${AnsiColor.BLUE}/      \ |  \  |  \|       \  /      \ |  \  |  \   ${AnsiColor.BRIGHT_MAGENTA}   |       \ |       \  /      \    |     \|        \ /      \|        \
-${AnsiColor.BRIGHT_RED} | $$ /  $$|${AnsiColor.BLUE}  $$$$$$\| $$\ | $$| $$$$$$$\|  $$$$$$\| $$\ | $$   ${AnsiColor.BRIGHT_MAGENTA}   | $$$$$$$\| $$$$$$$\|  $$$$$$\    \$$$$$| $$$$$$$$|  $$$$$$\\$$$$$$$$
-${AnsiColor.BRIGHT_RED} | $$/  $$ |${AnsiColor.BLUE} $$__| $$| $$$\| $$| $$__/ $$| $$__| $$| $$$\| $$   ${AnsiColor.BRIGHT_MAGENTA}   | $$__/ $$| $$__| $$| $$  | $$      | $$| $$__    | $$   \$$  | $$
-${AnsiColor.BRIGHT_RED} | $$  $$  |${AnsiColor.BLUE} $$    $$| $$$$\ $$| $$    $$| $$    $$| $$$$\ $$   ${AnsiColor.BRIGHT_MAGENTA}   | $$    $$| $$    $$| $$  | $$ __   | $$| $$  \   | $$        | $$
-${AnsiColor.BRIGHT_RED} | $$$$$\  |${AnsiColor.BLUE} $$$$$$$$| $$\$$ $$| $$$$$$$\| $$$$$$$$| $$\$$ $$   ${AnsiColor.BRIGHT_MAGENTA}   | $$$$$$$ | $$$$$$$\| $$  | $$|  \  | $$| $$$$$   | $$   __   | $$
-${AnsiColor.BRIGHT_RED} | $$ \$$\ |${AnsiColor.BLUE} $$  | $$| $$ \$$$$| $$__/ $$| $$  | $$| $$ \$$$$   ${AnsiColor.BRIGHT_MAGENTA}   | $$      | $$  | $$| $$__/ $$| $$__| $$| $$_____ | $$__/  \  | $$
-${AnsiColor.BRIGHT_RED} | $$  \$$\|${AnsiColor.BLUE} $$  | $$| $$  \$$$| $$    $$| $$  | $$| $$  \$$$   ${AnsiColor.BRIGHT_MAGENTA}   | $$      | $$  | $$ \$$    $$ \$$    $$| $$     \ \$$    $$  | $$
+${AnsiColor.BRIGHT_RED} | $$ /  $$${AnsiColor.BLUE}|  $$$$$$\| $$\ | $$| $$$$$$$\|  $$$$$$\| $$\ | $$   ${AnsiColor.BRIGHT_MAGENTA}   | $$$$$$$\| $$$$$$$\|  $$$$$$\    \$$$$$| $$$$$$$$|  $$$$$$\\$$$$$$$$
+${AnsiColor.BRIGHT_RED} | $$/  $$ ${AnsiColor.BLUE}| $$__| $$| $$$\| $$| $$__/ $$| $$__| $$| $$$\| $$   ${AnsiColor.BRIGHT_MAGENTA}   | $$__/ $$| $$__| $$| $$  | $$      | $$| $$__    | $$   \$$  | $$
+${AnsiColor.BRIGHT_RED} | $$  $$  ${AnsiColor.BLUE}| $$    $$| $$$$\ $$| $$    $$| $$    $$| $$$$\ $$   ${AnsiColor.BRIGHT_MAGENTA}   | $$    $$| $$    $$| $$  | $$ __   | $$| $$  \   | $$        | $$
+${AnsiColor.BRIGHT_RED} | $$$$$\  ${AnsiColor.BLUE}| $$$$$$$$| $$\$$ $$| $$$$$$$\| $$$$$$$$| $$\$$ $$   ${AnsiColor.BRIGHT_MAGENTA}   | $$$$$$$ | $$$$$$$\| $$  | $$|  \  | $$| $$$$$   | $$   __   | $$
+${AnsiColor.BRIGHT_RED} | $$ \$$\ ${AnsiColor.BLUE}| $$  | $$| $$ \$$$$| $$__/ $$| $$  | $$| $$ \$$$$   ${AnsiColor.BRIGHT_MAGENTA}   | $$      | $$  | $$| $$__/ $$| $$__| $$| $$_____ | $$__/  \  | $$
+${AnsiColor.BRIGHT_RED} | $$  \$$\${AnsiColor.BLUE}| $$  | $$| $$  \$$$| $$    $$| $$  | $$| $$  \$$$   ${AnsiColor.BRIGHT_MAGENTA}   | $$      | $$  | $$ \$$    $$ \$$    $$| $$     \ \$$    $$  | $$
 ${AnsiColor.BRIGHT_RED}  \$$   \$$ ${AnsiColor.BLUE}\$$   \$$ \$$   \$$ \$$$$$$$  \$$   \$$ \$$   \$$   ${AnsiColor.BRIGHT_MAGENTA}    \$$       \$$   \$$  \$$$$$$   \$$$$$$  \$$$$$$$$  \$$$$$$    \$$
 
 ${AnsiColor.BRIGHT_BLUE}:: KANBAm PROJECT 🤓  :: Running Spring Boot ${spring-boot.version} ::
