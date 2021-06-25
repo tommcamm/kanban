@@ -1,15 +1,15 @@
 <template>
   <div class="home row">
     <div class="col-md-3">
-      <span class="hipster img-fluid rounded"></span>
+      <img src="content/images/home.png" />
     </div>
     <div class="col-md-9">
-      <h1 class="display-4">Welcome, Java Hipster!</h1>
-      <p class="lead">This is your homepage</p>
+      <h1 class="display-4">Benvenuto nel Kanban Project!</h1>
+      <p class="lead">Questa è la tua homepage</p>
 
       <div>
         <div class="alert alert-success" v-if="authenticated">
-          <span v-if="username">You are logged in as user "{{ username }}"</span>
+          <span v-if="username">Sei autenticato come "{{ username }}"</span>
         </div>
 
         <div class="alert alert-warning" v-if="!authenticated">
@@ -21,37 +21,26 @@
           >
         </div>
         <div class="alert alert-warning" v-if="!authenticated">
-          <span>You don't have an account yet?</span>&nbsp;
-          <router-link class="alert-link" to="/register">Register a new account</router-link>
+          <span>Non hai ancora un account?</span>&nbsp;
+          <router-link class="alert-link" to="/register">Registrati ora!</router-link>
         </div>
       </div>
-
-      <p>If you have any question on JHipster:</p>
-
-      <ul>
-        <li><a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">JHipster homepage</a></li>
-        <li>
-          <a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">JHipster on Stack Overflow</a>
-        </li>
-        <li>
-          <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer"
-            >JHipster bug tracker</a
-          >
-        </li>
-        <li>
-          <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">JHipster public chat room</a>
-        </li>
-        <li>
-          <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">follow @jhipster on Twitter</a>
-        </li>
-      </ul>
-
-      <p>
-        <span>If you like JHipster, don't forget to give us a star on</span>
-        <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">GitHub</a>!
-      </p>
     </div>
   </div>
 </template>
 
+<style scoped>
+.home {
+  position: relative;
+  text-align: center;
+}
+
+.alert {
+  width: 60%;
+  left: 20%;
+}
+</style>
+
 <script lang="ts" src="./home.component.ts"></script>
+
+width="460" height="380"
