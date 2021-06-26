@@ -39,6 +39,11 @@
   width: 60%;
   left: 20%;
 }
+
+img {
+  width: 130%;
+  height: auto;
+}
 </style>
 
 <script lang="ts" src="./home.component.ts"></script>

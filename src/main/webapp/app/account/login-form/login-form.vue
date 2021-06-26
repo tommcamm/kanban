@@ -14,7 +14,7 @@
               type="text"
               name="username"
               autofocus
-              placeholder="Your username"
+              placeholder="Il tuo username"
               v-model="login"
               data-cy="username"
             >
@@ -26,31 +26,31 @@
               type="password"
               name="password"
               v-model.trim="name"
-              placeholder="Your password"
+              placeholder="La tua password"
               v-model="password"
               data-cy="password"
             >
             </b-form-input>
           </b-form-group>
           <b-form-checkbox id="rememberMe" name="rememberMe" v-model="rememberMe" checked>
-            <span>Remember me</span>
+            <span>Ricordami</span>
           </b-form-checkbox>
           <div>
-            <b-button data-cy="submit" type="submit" variant="primary">Sign in</b-button>
+            <b-button data-cy="submit" type="submit" variant="primary">Entra</b-button>
           </div>
         </b-form>
         <p></p>
         <div>
           <b-alert show variant="warning">
             <b-link :to="'/account/reset/request'" class="alert-link" data-cy="forgetYourPasswordSelector"
-              >Did you forget your password?</b-link
+              >Hai dimenticato la password?</b-link
             >
           </b-alert>
         </div>
         <div>
           <b-alert show variant="warning">
-            <span>You don't have an account yet?</span>
-            <b-link :to="'/register'" class="alert-link">Register a new account</b-link>
+            <span>Non hai ancora un account?</span>
+            <b-link :to="'/register'" class="alert-link">Registrati</b-link>
           </b-alert>
         </div>
       </div>

@@ -96,7 +96,7 @@
           </span>
           <b-dropdown-item data-cy="settings" to="/account/settings" tag="b-dropdown-item" v-if="authenticated" active-class="active">
             <font-awesome-icon icon="wrench" />
-            <span>Settings</span>
+            <span>Impostazioni</span>
           </b-dropdown-item>
           <b-dropdown-item data-cy="passwordItem" to="/account/password" tag="b-dropdown-item" v-if="authenticated" active-class="active">
             <font-awesome-icon icon="lock" />
@@ -104,11 +104,11 @@
           </b-dropdown-item>
           <b-dropdown-item data-cy="logout" v-if="authenticated" v-on:click="logout()" id="logout" active-class="active">
             <font-awesome-icon icon="sign-out-alt" />
-            <span>Sign out</span>
+            <span>Esci</span>
           </b-dropdown-item>
           <b-dropdown-item data-cy="login" v-if="!authenticated" v-on:click="openLogin()" id="login" active-class="active">
             <font-awesome-icon icon="sign-in-alt" />
-            <span>Sign in</span>
+            <span>Entra</span>
           </b-dropdown-item>
           <b-dropdown-item
             data-cy="register"
@@ -119,7 +119,7 @@
             active-class="active"
           >
             <font-awesome-icon icon="user-plus" />
-            <span>Register</span>
+            <span>Registrati</span>
           </b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>

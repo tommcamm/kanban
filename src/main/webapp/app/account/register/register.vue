@@ -2,21 +2,19 @@
   <div>
     <div class="row justify-content-center">
       <div class="col-md-8 toastify-container">
-        <h1 id="register-title" data-cy="registerTitle">Registration</h1>
+        <h1 id="register-title" data-cy="registerTitle">Registrazione</h1>
 
         <div class="alert alert-success" role="alert" v-if="success">
-          <strong>Registration saved!</strong> Please check your email for confirmation.
+          <strong>Registrazione effettuata con successo!</strong> Controlla la tua mail per confermare.
         </div>
 
-        <div class="alert alert-danger" role="alert" v-if="error"><strong>Registration failed!</strong> Please try again later.</div>
+        <div class="alert alert-danger" role="alert" v-if="error"><strong>Registrazione fallita!</strong> Riprova più tardi</div>
 
         <div class="alert alert-danger" role="alert" v-if="errorUserExists">
-          <strong>Login name already registered!</strong> Please choose another one.
+          <strong>Username già esistente,</strong> scegline un altro.
         </div>
 
-        <div class="alert alert-danger" role="alert" v-if="errorEmailExists">
-          <strong>Email is already in use!</strong> Please choose another one.
-        </div>
+        <div class="alert alert-danger" role="alert" v-if="errorEmailExists"><strong>Email già esistente,</strong> scegline un altro.</div>
       </div>
     </div>
     <div class="row justify-content-center">
@@ -38,15 +36,15 @@
               data-cy="username"
             />
             <div v-if="$v.registerAccount.login.$anyDirty && $v.registerAccount.login.$invalid">
-              <small class="form-text text-danger" v-if="!$v.registerAccount.login.required"> Your username is required. </small>
+              <small class="form-text text-danger" v-if="!$v.registerAccount.login.required"> Username richiesto. </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.login.minLength">
-                Your username is required to be at least 1 character.
+                Il tuo Username deve contenere almeno 1 carattere.
               </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.login.maxLength">
-                Your username cannot be longer than 50 characters.
+                Il tuo Username può contenere al massimo 50 caratteri.
               </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.login.pattern">
-                Your username can only contain letters and digits.
+                Il tuo Username può contenere solo lettere e numeri.
               </small>
             </div>
           </div>
@@ -66,18 +64,18 @@
               data-cy="email"
             />
             <div v-if="$v.registerAccount.email.$anyDirty && $v.registerAccount.email.$invalid">
-              <small class="form-text text-danger" v-if="!$v.registerAccount.email.required"> Your email is required. </small>
-              <small class="form-text text-danger" v-if="!$v.registerAccount.email.email"> Your email is invalid. </small>
+              <small class="form-text text-danger" v-if="!$v.registerAccount.email.required"> Email richiesta. </small>
+              <small class="form-text text-danger" v-if="!$v.registerAccount.email.email"> Email non valida.</small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.email.minLength">
-                Your email is required to be at least 5 characters.
+                La tua email deve contenere almeno 1 carattere.
               </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.email.maxLength">
-                Your email cannot be longer than 100 characters.
+                La tua email può contenere al massimo 100 caratteri.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="firstPassword">New password</label>
+            <label class="form-control-label" for="firstPassword">Password</label>
             <input
               type="password"
               class="form-control"
@@ -91,17 +89,17 @@
               data-cy="firstPassword"
             />
             <div v-if="$v.registerAccount.password.$anyDirty && $v.registerAccount.password.$invalid">
-              <small class="form-text text-danger" v-if="!$v.registerAccount.password.required"> Your password is required. </small>
+              <small class="form-text text-danger" v-if="!$v.registerAccount.password.required"> Password richiesta. </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.password.minLength">
-                Your password is required to be at least 4 characters.
+                La tua password deve contenere almeno 4 caratteri.
               </small>
               <small class="form-text text-danger" v-if="!$v.registerAccount.password.maxLength">
-                Your password cannot be longer than 50 characters.
+                La tua password può contenere al massimo 100 caratteri.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="secondPassword">New password confirmation</label>
+            <label class="form-control-label" for="secondPassword">Conferma password</label>
             <input
               type="password"
               class="form-control"
@@ -115,15 +113,15 @@
               data-cy="secondPassword"
             />
             <div v-if="$v.confirmPassword.$dirty && $v.confirmPassword.$invalid">
-              <small class="form-text text-danger" v-if="!$v.confirmPassword.required"> Your confirmation password is required. </small>
+              <small class="form-text text-danger" v-if="!$v.confirmPassword.required"> Conferma password richiesta. </small>
               <small class="form-text text-danger" v-if="!$v.confirmPassword.minLength">
-                Your confirmation password is required to be at least 4 characters.
+                La tua conferma della password deve contenere almeno 4 caratteri.
               </small>
               <small class="form-text text-danger" v-if="!$v.confirmPassword.maxLength">
-                Your confirmation password cannot be longer than 50 characters.
+                La tua conferma della password può contenere al massimo 100 caratteri.
               </small>
               <small class="form-text text-danger" v-if="!$v.confirmPassword.sameAsPassword">
-                The password and its confirmation do not match!
+                La password e la conferma della password non corrispondono.
               </small>
             </div>
           </div>
@@ -132,10 +130,12 @@
         </form>
         <p></p>
         <div class="alert alert-warning">
-          <span>If you want to </span>
-          <a class="alert-link" v-on:click="openLogin()">sign in</a
+          <span><strong>DEV-MODE</strong></span>
+          <br />
+          <span> Se vuoi </span>
+          <a class="alert-link" v-on:click="openLogin()">entrare</a
           ><span
-            >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
+            >, puoi utilizzare gli account di default:<br />- Admin (username="admin" e password="admin") <br />- Utente (username="user" e
             password="user").</span
           >
         </div>

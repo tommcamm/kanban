@@ -1,10 +1,10 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="KanbanHeading">
-      <span id="kanban-heading">Kanbans</span>
+      <span id="kanban-heading">I tuoi Kanban</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh List</span>
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Aggiorna</span>
         </button>
         <router-link :to="{ name: 'KanbanCreate' }" custom v-slot="{ navigate }">
           <button
@@ -14,14 +14,16 @@
             class="btn btn-primary jh-create-entity create-kanban"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span> Create a new Kanban </span>
+            <span> Crea un nuovo Kanban </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && kanbans && kanbans.length === 0">
-      <span>No kanbans found</span>
+      <router-link :to="{ name: 'KanbanCreate' }" custom v-slot="{ navigate }">
+        <span>Nessun Kanban trovato. Vuoi crearne uno nuovo? <a class="alert-link" @click="navigate">Crea</a>! </span>
+      </router-link>
     </div>
     <div class="table-responsive" v-if="kanbans && kanbans.length > 0">
       <table class="table table-striped" aria-describedby="kanbans">
