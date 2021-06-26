@@ -7,5 +7,5 @@ ${AnsiColor.BRIGHT_RED} | $$ \$$\ ${AnsiColor.BLUE}| $$  | $$| $$ \$$$$| $$__/ $
 ${AnsiColor.BRIGHT_RED} | $$  \$$\${AnsiColor.BLUE}| $$  | $$| $$  \$$$| $$    $$| $$  | $$| $$  \$$$   ${AnsiColor.BRIGHT_MAGENTA}   | $$      | $$  | $$ \$$    $$ \$$    $$| $$     \ \$$    $$  | $$
 ${AnsiColor.BRIGHT_RED}  \$$   \$$ ${AnsiColor.BLUE}\$$   \$$ \$$   \$$ \$$$$$$$  \$$   \$$ \$$   \$$   ${AnsiColor.BRIGHT_MAGENTA}    \$$       \$$   \$$  \$$$$$$   \$$$$$$  \$$$$$$$$  \$$$$$$    \$$
 
-${AnsiColor.BRIGHT_BLUE}:: KANBAm PROJECT 🤓  :: Running Spring Boot ${spring-boot.version} ::
+${AnsiColor.BRIGHT_BLUE}:: KANBAN (看板) PROJECT 🤓  :: Running Spring Boot ${spring-boot.version} ::
 :: By Tommy and Raff ::${AnsiColor.DEFAULT}

@@ -48,6 +48,7 @@ public class CacheConfiguration {
             createCache(cm, edu.tommraff.kanban.domain.User.class.getName());
             createCache(cm, edu.tommraff.kanban.domain.Authority.class.getName());
             createCache(cm, edu.tommraff.kanban.domain.User.class.getName() + ".authorities");
+            createCache(cm, edu.tommraff.kanban.domain.Kanban.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

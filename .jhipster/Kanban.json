@@ -1,0 +1,27 @@
+{
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMinlength": "1",
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "created_at",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "last_edit",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [],
+  "service": "serviceImpl",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": true,
+  "readOnly": false,
+  "pagination": "pagination",
+  "name": "Kanban",
+  "changelogDate": "20210626075335"
+}
