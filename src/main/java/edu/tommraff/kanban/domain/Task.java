@@ -8,6 +8,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A Task.
+ * TODO: Image should be added, and topic with color
  */
 @Entity
 @Table(name = "task")

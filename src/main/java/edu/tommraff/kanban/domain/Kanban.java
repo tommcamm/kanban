@@ -9,6 +9,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A Kanban.
+ * FIXME: For now every user share the kanbans, it is needed to permit a user to see only his kanbans
  */
 @Entity
 @Table(name = "kanban")
