@@ -2,14 +2,14 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="kanbanApp.kanban.home.createOrEditLabel" data-cy="KanbanCreateUpdateHeading">Create or edit a Kanban</h2>
+        <h2 id="kanbanApp.kanban.home.createOrEditLabel" data-cy="KanbanCreateUpdateHeading">Crea o modifica un Kanban</h2>
         <div>
           <div class="form-group" v-if="kanban.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="kanban.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="kanban-name">Name</label>
+            <label class="form-control-label" for="kanban-name">Nome</label>
             <input
               type="text"
               class="form-control"
@@ -22,16 +22,14 @@
             />
             <div v-if="$v.kanban.name.$anyDirty && $v.kanban.name.$invalid">
               <small class="form-text text-danger" v-if="!$v.kanban.name.required"> This field is required. </small>
-              <small class="form-text text-danger" v-if="!$v.kanban.name.minLength">
-                This field is required to be at least 1 characters.
-              </small>
+              <small class="form-text text-danger" v-if="!$v.kanban.name.minLength"> Questo campo richiede almeno 1 carattere. </small>
               <small class="form-text text-danger" v-if="!$v.kanban.name.maxLength">
-                This field cannot be longer than 30 characters.
+                Questo campo non può contenere più di 30 caratteri.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="kanban-created_at">Created At</label>
+            <label class="form-control-label" for="kanban-created_at">Creato il</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -59,7 +57,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="kanban-last_edit">Last Edit</label>
+            <label class="form-control-label" for="kanban-last_edit">Ultima modifica</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
