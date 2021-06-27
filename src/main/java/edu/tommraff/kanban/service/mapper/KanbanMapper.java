@@ -8,4 +8,9 @@ import org.mapstruct.*;
  * Mapper for the entity {@link Kanban} and its DTO {@link KanbanDTO}.
  */
 @Mapper(componentModel = "spring", uses = {})
-public interface KanbanMapper extends EntityMapper<KanbanDTO, Kanban> {}
+public interface KanbanMapper extends EntityMapper<KanbanDTO, Kanban> {
+    @Named("id")
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "id", source = "id")
+    KanbanDTO toDtoId(Kanban kanban);
+}
