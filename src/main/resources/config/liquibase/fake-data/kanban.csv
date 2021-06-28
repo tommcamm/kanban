@@ -1,11 +1,11 @@
-id;name;created_at;last_edit
-1;teal;2021-06-26;2021-06-25
-2;Human;2021-06-25;2021-06-26
-3;invoice;2021-06-25;2021-06-25
-4;Fantastic Car;2021-06-25;2021-06-26
-5;synergize installation;2021-06-26;2021-06-25
-6;Incredible Industrial Angola;2021-06-25;2021-06-25
-7;Administrator payment;2021-06-25;2021-06-25
-8;cyan Focused;2021-06-25;2021-06-25
-9;California Account Knoll;2021-06-26;2021-06-25
-10;Account transmitting deploy;2021-06-25;2021-06-25
+id;name;created_at;last_edit;userkanban_id
+1;teal;2021-06-26;2021-06-25;1
+2;Human;2021-06-25;2021-06-26;2
+3;invoice;2021-06-25;2021-06-25;1
+4;Fantastic Car;2021-06-25;2021-06-26;2
+5;synergize installation;2021-06-26;2021-06-25;2
+6;Incredible Industrial Angola;2021-06-25;2021-06-25;2
+7;Administrator payment;2021-06-25;2021-06-25;1
+8;cyan Focused;2021-06-25;2021-06-25;1
+9;California Account Knoll;2021-06-26;2021-06-25;1
+10;Account transmitting deploy;2021-06-25;2021-06-25;1

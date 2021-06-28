@@ -1,5 +1,6 @@
 package edu.tommraff.kanban.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -31,6 +32,7 @@ public class Klist implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
+    @JsonIgnoreProperties(value = { "userkanban" }, allowSetters = true)
     private Kanban kanbanlist;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

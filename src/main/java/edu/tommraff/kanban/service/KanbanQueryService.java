@@ -95,6 +95,12 @@ public class KanbanQueryService extends QueryService<Kanban> {
             if (criteria.getLast_edit() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getLast_edit(), Kanban_.last_edit));
             }
+            if (criteria.getUserkanbanId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(criteria.getUserkanbanId(), root -> root.join(Kanban_.userkanban, JoinType.LEFT).get(User_.id))
+                    );
+            }
         }
         return specification;
     }

@@ -2,6 +2,8 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import { required, minLength, maxLength } from 'vuelidate/lib/validators';
 
+import UserService from '@/admin/user-management/user-management.service';
+
 import { IKanban, Kanban } from '@/shared/model/kanban.model';
 import KanbanService from './kanban.service';
 
@@ -14,6 +16,9 @@ const validations: any = {
     },
     created_at: {},
     last_edit: {},
+    userkanban: {
+      required,
+    },
   },
 };
 
@@ -23,6 +28,10 @@ const validations: any = {
 export default class KanbanUpdate extends Vue {
   @Inject('kanbanService') private kanbanService: () => KanbanService;
   public kanban: IKanban = new Kanban();
+
+  @Inject('userService') private userService: () => UserService;
+
+  public users: Array<any> = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -31,6 +40,7 @@ export default class KanbanUpdate extends Vue {
       if (to.params.kanbanId) {
         vm.retrieveKanban(to.params.kanbanId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -91,5 +101,11 @@ export default class KanbanUpdate extends Vue {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.userService()
+      .retrieve()
+      .then(res => {
+        this.users = res.data;
+      });
+  }
 }

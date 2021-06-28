@@ -86,6 +86,22 @@
               />
             </b-input-group>
           </div>
+          <div class="form-group">
+            <label class="form-control-label" for="kanban-userkanban">Userkanban</label>
+            <select class="form-control" id="kanban-userkanban" data-cy="userkanban" name="userkanban" v-model="kanban.userkanban" required>
+              <option v-if="!kanban.userkanban" v-bind:value="null" selected></option>
+              <option
+                v-bind:value="kanban.userkanban && userOption.id === kanban.userkanban.id ? kanban.userkanban : userOption"
+                v-for="userOption in users"
+                :key="userOption.id"
+              >
+                {{ userOption.login }}
+              </option>
+            </select>
+          </div>
+          <div v-if="$v.kanban.userkanban.$anyDirty && $v.kanban.userkanban.$invalid">
+            <small class="form-text text-danger" v-if="!$v.kanban.userkanban.required"> This field is required. </small>
+          </div>
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">

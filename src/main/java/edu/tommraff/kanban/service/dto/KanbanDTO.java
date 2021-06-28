@@ -20,6 +20,8 @@ public class KanbanDTO implements Serializable {
 
     private LocalDate last_edit;
 
+    private UserDTO userkanban;
+
     public Long getId() {
         return id;
     }
@@ -52,6 +54,14 @@ public class KanbanDTO implements Serializable {
         this.last_edit = last_edit;
     }
 
+    public UserDTO getUserkanban() {
+        return userkanban;
+    }
+
+    public void setUserkanban(UserDTO userkanban) {
+        this.userkanban = userkanban;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -81,6 +91,7 @@ public class KanbanDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", created_at='" + getCreated_at() + "'" +
             ", last_edit='" + getLast_edit() + "'" +
+            ", userkanban=" + getUserkanban() +
             "}";
     }
 }

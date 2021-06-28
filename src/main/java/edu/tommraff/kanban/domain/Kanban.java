@@ -33,6 +33,10 @@ public class Kanban implements Serializable {
     @Column(name = "last_edit")
     private LocalDate last_edit;
 
+    @ManyToOne(optional = false)
+    @NotNull
+    private User userkanban;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -84,6 +88,19 @@ public class Kanban implements Serializable {
 
     public void setLast_edit(LocalDate last_edit) {
         this.last_edit = last_edit;
+    }
+
+    public User getUserkanban() {
+        return this.userkanban;
+    }
+
+    public Kanban userkanban(User user) {
+        this.setUserkanban(user);
+        return this;
+    }
+
+    public void setUserkanban(User user) {
+        this.userkanban = user;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

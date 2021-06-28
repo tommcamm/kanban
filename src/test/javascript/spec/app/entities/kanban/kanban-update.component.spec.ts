@@ -8,6 +8,8 @@ import KanbanUpdateComponent from '@/entities/kanban/kanban-update.vue';
 import KanbanClass from '@/entities/kanban/kanban-update.component';
 import KanbanService from '@/entities/kanban/kanban.service';
 
+import UserService from '@/admin/user-management/user-management.service';
+
 const localVue = createLocalVue();
 
 config.initVueApp(localVue);
@@ -35,6 +37,8 @@ describe('Component Tests', () => {
         router,
         provide: {
           kanbanService: () => kanbanServiceStub,
+
+          userService: () => new UserService(),
         },
       });
       comp = wrapper.vm;

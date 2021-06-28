@@ -33,6 +33,8 @@ public class KanbanCriteria implements Serializable, Criteria {
 
     private LocalDateFilter last_edit;
 
+    private LongFilter userkanbanId;
+
     public KanbanCriteria() {}
 
     public KanbanCriteria(KanbanCriteria other) {
@@ -40,6 +42,7 @@ public class KanbanCriteria implements Serializable, Criteria {
         this.name = other.name == null ? null : other.name.copy();
         this.created_at = other.created_at == null ? null : other.created_at.copy();
         this.last_edit = other.last_edit == null ? null : other.last_edit.copy();
+        this.userkanbanId = other.userkanbanId == null ? null : other.userkanbanId.copy();
     }
 
     @Override
@@ -107,6 +110,21 @@ public class KanbanCriteria implements Serializable, Criteria {
         this.last_edit = last_edit;
     }
 
+    public LongFilter getUserkanbanId() {
+        return userkanbanId;
+    }
+
+    public LongFilter userkanbanId() {
+        if (userkanbanId == null) {
+            userkanbanId = new LongFilter();
+        }
+        return userkanbanId;
+    }
+
+    public void setUserkanbanId(LongFilter userkanbanId) {
+        this.userkanbanId = userkanbanId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -120,13 +138,14 @@ public class KanbanCriteria implements Serializable, Criteria {
             Objects.equals(id, that.id) &&
             Objects.equals(name, that.name) &&
             Objects.equals(created_at, that.created_at) &&
-            Objects.equals(last_edit, that.last_edit)
+            Objects.equals(last_edit, that.last_edit) &&
+            Objects.equals(userkanbanId, that.userkanbanId)
         );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, created_at, last_edit);
+        return Objects.hash(id, name, created_at, last_edit, userkanbanId);
     }
 
     // prettier-ignore
@@ -137,6 +156,7 @@ public class KanbanCriteria implements Serializable, Criteria {
             (name != null ? "name=" + name + ", " : "") +
             (created_at != null ? "created_at=" + created_at + ", " : "") +
             (last_edit != null ? "last_edit=" + last_edit + ", " : "") +
+            (userkanbanId != null ? "userkanbanId=" + userkanbanId + ", " : "") +
             "}";
     }
 }

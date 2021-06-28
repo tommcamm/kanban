@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import edu.tommraff.kanban.IntegrationTest;
 import edu.tommraff.kanban.domain.Kanban;
+import edu.tommraff.kanban.domain.User;
 import edu.tommraff.kanban.repository.KanbanRepository;
 import edu.tommraff.kanban.service.criteria.KanbanCriteria;
 import edu.tommraff.kanban.service.dto.KanbanDTO;
@@ -73,6 +74,11 @@ class KanbanResourceIT {
      */
     public static Kanban createEntity(EntityManager em) {
         Kanban kanban = new Kanban().name(DEFAULT_NAME).created_at(DEFAULT_CREATED_AT).last_edit(DEFAULT_LAST_EDIT);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        kanban.setUserkanban(user);
         return kanban;
     }
 
@@ -84,6 +90,11 @@ class KanbanResourceIT {
      */
     public static Kanban createUpdatedEntity(EntityManager em) {
         Kanban kanban = new Kanban().name(UPDATED_NAME).created_at(UPDATED_CREATED_AT).last_edit(UPDATED_LAST_EDIT);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        kanban.setUserkanban(user);
         return kanban;
     }
 
@@ -484,6 +495,25 @@ class KanbanResourceIT {
 
         // Get all the kanbanList where last_edit is greater than SMALLER_LAST_EDIT
         defaultKanbanShouldBeFound("last_edit.greaterThan=" + SMALLER_LAST_EDIT);
+    }
+
+    @Test
+    @Transactional
+    void getAllKanbansByUserkanbanIsEqualToSomething() throws Exception {
+        // Initialize the database
+        kanbanRepository.saveAndFlush(kanban);
+        User userkanban = UserResourceIT.createEntity(em);
+        em.persist(userkanban);
+        em.flush();
+        kanban.setUserkanban(userkanban);
+        kanbanRepository.saveAndFlush(kanban);
+        Long userkanbanId = userkanban.getId();
+
+        // Get all the kanbanList where userkanban equals to userkanbanId
+        defaultKanbanShouldBeFound("userkanbanId.equals=" + userkanbanId);
+
+        // Get all the kanbanList where userkanban equals to (userkanbanId + 1)
+        defaultKanbanShouldNotBeFound("userkanbanId.equals=" + (userkanbanId + 1));
     }
 
     /**

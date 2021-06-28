@@ -16,7 +16,17 @@
       "fieldType": "LocalDate"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipName": "userkanban",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"],
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "kanban"
+    }
+  ],
   "service": "serviceImpl",
   "dto": "mapstruct",
   "jpaMetamodelFiltering": true,
