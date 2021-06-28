@@ -1,19 +1,18 @@
 package edu.tommraff.kanban.domain;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A Kanban.
+ * A Klist.
  */
 @Entity
-@Table(name = "kanban")
+@Table(name = "klist")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Kanban implements Serializable {
+public class Klist implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,15 +22,16 @@ public class Kanban implements Serializable {
     private Long id;
 
     @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "name", length = 30, nullable = false)
-    private String name;
+    @Size(min = 1, max = 40)
+    @Column(name = "title", length = 40, nullable = false)
+    private String title;
 
-    @Column(name = "created_at")
-    private LocalDate created_at;
+    @Column(name = "jhi_order")
+    private Integer order;
 
-    @Column(name = "last_edit")
-    private LocalDate last_edit;
+    @ManyToOne(optional = false)
+    @NotNull
+    private Kanban kanbanlist;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -42,48 +42,48 @@ public class Kanban implements Serializable {
         this.id = id;
     }
 
-    public Kanban id(Long id) {
+    public Klist id(Long id) {
         this.id = id;
         return this;
     }
 
-    public String getName() {
-        return this.name;
+    public String getTitle() {
+        return this.title;
     }
 
-    public Kanban name(String name) {
-        this.name = name;
+    public Klist title(String title) {
+        this.title = title;
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public LocalDate getCreated_at() {
-        return this.created_at;
+    public Integer getOrder() {
+        return this.order;
     }
 
-    public Kanban created_at(LocalDate created_at) {
-        this.created_at = created_at;
+    public Klist order(Integer order) {
+        this.order = order;
         return this;
     }
 
-    public void setCreated_at(LocalDate created_at) {
-        this.created_at = created_at;
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 
-    public LocalDate getLast_edit() {
-        return this.last_edit;
+    public Kanban getKanbanlist() {
+        return this.kanbanlist;
     }
 
-    public Kanban last_edit(LocalDate last_edit) {
-        this.last_edit = last_edit;
+    public Klist kanbanlist(Kanban kanban) {
+        this.setKanbanlist(kanban);
         return this;
     }
 
-    public void setLast_edit(LocalDate last_edit) {
-        this.last_edit = last_edit;
+    public void setKanbanlist(Kanban kanban) {
+        this.kanbanlist = kanban;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -93,10 +93,10 @@ public class Kanban implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Kanban)) {
+        if (!(o instanceof Klist)) {
             return false;
         }
-        return id != null && id.equals(((Kanban) o).id);
+        return id != null && id.equals(((Klist) o).id);
     }
 
     @Override
@@ -108,11 +108,10 @@ public class Kanban implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "Kanban{" +
+        return "Klist{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", created_at='" + getCreated_at() + "'" +
-            ", last_edit='" + getLast_edit() + "'" +
+            ", title='" + getTitle() + "'" +
+            ", order=" + getOrder() +
             "}";
     }
 }

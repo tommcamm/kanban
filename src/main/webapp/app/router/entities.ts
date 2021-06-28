@@ -14,6 +14,12 @@ const Task = () => import('@/entities/task/task.vue');
 const TaskUpdate = () => import('@/entities/task/task-update.vue');
 // prettier-ignore
 const TaskDetails = () => import('@/entities/task/task-details.vue');
+// prettier-ignore
+const Klist = () => import('@/entities/klist/klist.vue');
+// prettier-ignore
+const KlistUpdate = () => import('@/entities/klist/klist-update.vue');
+// prettier-ignore
+const KlistDetails = () => import('@/entities/klist/klist-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -63,6 +69,30 @@ export default [
     path: '/task/:taskId/view',
     name: 'TaskView',
     component: TaskDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/klist',
+    name: 'Klist',
+    component: Klist,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/klist/new',
+    name: 'KlistCreate',
+    component: KlistUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/klist/:klistId/edit',
+    name: 'KlistEdit',
+    component: KlistUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/klist/:klistId/view',
+    name: 'KlistView',
+    component: KlistDetails,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here
