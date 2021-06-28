@@ -8,10 +8,10 @@
     -->
     <changeSet id="20210627080344-2" author="jhipster">
 
-        <addForeignKeyConstraint baseColumnNames="kanban_id"
+        <addForeignKeyConstraint baseColumnNames="klisttask_id"
                                  baseTableName="task"
-                                 constraintName="fk_task__kanban_id"
+                                 constraintName="fk_task__klisttask_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="kanban"/>
+                                 referencedTableName="klist"/>
     </changeSet>
 </databaseChangeLog>

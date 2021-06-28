@@ -17,7 +17,7 @@ public class TaskDTO implements Serializable {
 
     private Integer order;
 
-    private KanbanDTO kanban;
+    private KlistDTO klisttask;
 
     public Long getId() {
         return id;
@@ -43,12 +43,12 @@ public class TaskDTO implements Serializable {
         this.order = order;
     }
 
-    public KanbanDTO getKanban() {
-        return kanban;
+    public KlistDTO getKlisttask() {
+        return klisttask;
     }
 
-    public void setKanban(KanbanDTO kanban) {
-        this.kanban = kanban;
+    public void setKlisttask(KlistDTO klisttask) {
+        this.klisttask = klisttask;
     }
 
     @Override
@@ -79,7 +79,7 @@ public class TaskDTO implements Serializable {
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", order=" + getOrder() +
-            ", kanban=" + getKanban() +
+            ", klisttask=" + getKlisttask() +
             "}";
     }
 }

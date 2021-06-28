@@ -41,17 +41,20 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="task-kanban">Kanban</label>
-            <select class="form-control" id="task-kanban" data-cy="kanban" name="kanban" v-model="task.kanban">
-              <option v-bind:value="null"></option>
+            <label class="form-control-label" for="task-klisttask">Klisttask</label>
+            <select class="form-control" id="task-klisttask" data-cy="klisttask" name="klisttask" v-model="task.klisttask" required>
+              <option v-if="!task.klisttask" v-bind:value="null" selected></option>
               <option
-                v-bind:value="task.kanban && kanbanOption.id === task.kanban.id ? task.kanban : kanbanOption"
-                v-for="kanbanOption in kanbans"
-                :key="kanbanOption.id"
+                v-bind:value="task.klisttask && klistOption.id === task.klisttask.id ? task.klisttask : klistOption"
+                v-for="klistOption in klists"
+                :key="klistOption.id"
               >
-                {{ kanbanOption.id }}
+                {{ klistOption.id }}
               </option>
             </select>
+          </div>
+          <div v-if="$v.task.klisttask.$anyDirty && $v.task.klisttask.$invalid">
+            <small class="form-text text-danger" v-if="!$v.task.klisttask.required"> This field is required. </small>
           </div>
         </div>
         <div>

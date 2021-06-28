@@ -1,5 +1,6 @@
 package edu.tommraff.kanban.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -29,8 +30,10 @@ public class Task implements Serializable {
     @Column(name = "jhi_order")
     private Integer order;
 
-    @ManyToOne
-    private Kanban kanban;
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties(value = { "kanbanlist" }, allowSetters = true)
+    private Klist klisttask;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -72,17 +75,17 @@ public class Task implements Serializable {
         this.order = order;
     }
 
-    public Kanban getKanban() {
-        return this.kanban;
+    public Klist getKlisttask() {
+        return this.klisttask;
     }
 
-    public Task kanban(Kanban kanban) {
-        this.setKanban(kanban);
+    public Task klisttask(Klist klist) {
+        this.setKlisttask(klist);
         return this;
     }
 
-    public void setKanban(Kanban kanban) {
-        this.kanban = kanban;
+    public void setKlisttask(Klist klist) {
+        this.klisttask = klist;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

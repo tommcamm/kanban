@@ -8,7 +8,7 @@ import TaskUpdateComponent from '@/entities/task/task-update.vue';
 import TaskClass from '@/entities/task/task-update.component';
 import TaskService from '@/entities/task/task.service';
 
-import KanbanService from '@/entities/kanban/kanban.service';
+import KlistService from '@/entities/klist/klist.service';
 
 const localVue = createLocalVue();
 
@@ -38,7 +38,7 @@ describe('Component Tests', () => {
         provide: {
           taskService: () => taskServiceStub,
 
-          kanbanService: () => new KanbanService(),
+          klistService: () => new KlistService(),
         },
       });
       comp = wrapper.vm;

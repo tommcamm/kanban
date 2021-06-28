@@ -6,7 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import edu.tommraff.kanban.IntegrationTest;
-import edu.tommraff.kanban.domain.Kanban;
+import edu.tommraff.kanban.domain.Klist;
 import edu.tommraff.kanban.domain.Task;
 import edu.tommraff.kanban.repository.TaskRepository;
 import edu.tommraff.kanban.service.criteria.TaskCriteria;
@@ -68,6 +68,16 @@ class TaskResourceIT {
      */
     public static Task createEntity(EntityManager em) {
         Task task = new Task().title(DEFAULT_TITLE).order(DEFAULT_ORDER);
+        // Add required entity
+        Klist klist;
+        if (TestUtil.findAll(em, Klist.class).isEmpty()) {
+            klist = KlistResourceIT.createEntity(em);
+            em.persist(klist);
+            em.flush();
+        } else {
+            klist = TestUtil.findAll(em, Klist.class).get(0);
+        }
+        task.setKlisttask(klist);
         return task;
     }
 
@@ -79,6 +89,16 @@ class TaskResourceIT {
      */
     public static Task createUpdatedEntity(EntityManager em) {
         Task task = new Task().title(UPDATED_TITLE).order(UPDATED_ORDER);
+        // Add required entity
+        Klist klist;
+        if (TestUtil.findAll(em, Klist.class).isEmpty()) {
+            klist = KlistResourceIT.createUpdatedEntity(em);
+            em.persist(klist);
+            em.flush();
+        } else {
+            klist = TestUtil.findAll(em, Klist.class).get(0);
+        }
+        task.setKlisttask(klist);
         return task;
     }
 
@@ -376,21 +396,21 @@ class TaskResourceIT {
 
     @Test
     @Transactional
-    void getAllTasksByKanbanIsEqualToSomething() throws Exception {
+    void getAllTasksByKlisttaskIsEqualToSomething() throws Exception {
         // Initialize the database
         taskRepository.saveAndFlush(task);
-        Kanban kanban = KanbanResourceIT.createEntity(em);
-        em.persist(kanban);
+        Klist klisttask = KlistResourceIT.createEntity(em);
+        em.persist(klisttask);
         em.flush();
-        task.setKanban(kanban);
+        task.setKlisttask(klisttask);
         taskRepository.saveAndFlush(task);
-        Long kanbanId = kanban.getId();
+        Long klisttaskId = klisttask.getId();
 
-        // Get all the taskList where kanban equals to kanbanId
-        defaultTaskShouldBeFound("kanbanId.equals=" + kanbanId);
+        // Get all the taskList where klisttask equals to klisttaskId
+        defaultTaskShouldBeFound("klisttaskId.equals=" + klisttaskId);
 
-        // Get all the taskList where kanban equals to (kanbanId + 1)
-        defaultTaskShouldNotBeFound("kanbanId.equals=" + (kanbanId + 1));
+        // Get all the taskList where klisttask equals to (klisttaskId + 1)
+        defaultTaskShouldNotBeFound("klisttaskId.equals=" + (klisttaskId + 1));
     }
 
     /**

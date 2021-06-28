@@ -33,9 +33,9 @@
               <span>Order</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'order'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('kanban.id')">
-              <span>Kanban</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'kanban.id'"></jhi-sort-indicator>
+            <th scope="row" v-on:click="changeOrder('klisttask.id')">
+              <span>Klisttask</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'klisttask.id'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
           </tr>
@@ -48,8 +48,8 @@
             <td>{{ task.title }}</td>
             <td>{{ task.order }}</td>
             <td>
-              <div v-if="task.kanban">
-                <router-link :to="{ name: 'KanbanView', params: { kanbanId: task.kanban.id } }">{{ task.kanban.id }}</router-link>
+              <div v-if="task.klisttask">
+                <router-link :to="{ name: 'KlistView', params: { klistId: task.klisttask.id } }">{{ task.klisttask.id }}</router-link>
               </div>
             </td>
             <td class="text-right">

@@ -14,9 +14,10 @@
   ],
   "relationships": [
     {
-      "relationshipName": "kanban",
-      "otherEntityName": "kanban",
+      "relationshipName": "klisttask",
+      "otherEntityName": "klist",
       "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"],
       "otherEntityField": "id"
     }
   ],

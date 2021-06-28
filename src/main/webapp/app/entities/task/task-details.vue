@@ -17,11 +17,11 @@
             <span>{{ task.order }}</span>
           </dd>
           <dt>
-            <span>Kanban</span>
+            <span>Klisttask</span>
           </dt>
           <dd>
-            <div v-if="task.kanban">
-              <router-link :to="{ name: 'KanbanView', params: { kanbanId: task.kanban.id } }">{{ task.kanban.id }}</router-link>
+            <div v-if="task.klisttask">
+              <router-link :to="{ name: 'KlistView', params: { klistId: task.klisttask.id } }">{{ task.klisttask.id }}</router-link>
             </div>
           </dd>
         </dl>

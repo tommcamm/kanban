@@ -7,8 +7,8 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Task} and its DTO {@link TaskDTO}.
  */
-@Mapper(componentModel = "spring", uses = { KanbanMapper.class })
+@Mapper(componentModel = "spring", uses = { KlistMapper.class })
 public interface TaskMapper extends EntityMapper<TaskDTO, Task> {
-    @Mapping(target = "kanban", source = "kanban", qualifiedByName = "id")
+    @Mapping(target = "klisttask", source = "klisttask", qualifiedByName = "id")
     TaskDTO toDto(Task s);
 }

@@ -30,7 +30,7 @@ public class TaskCriteria implements Serializable, Criteria {
 
     private IntegerFilter order;
 
-    private LongFilter kanbanId;
+    private LongFilter klisttaskId;
 
     public TaskCriteria() {}
 
@@ -38,7 +38,7 @@ public class TaskCriteria implements Serializable, Criteria {
         this.id = other.id == null ? null : other.id.copy();
         this.title = other.title == null ? null : other.title.copy();
         this.order = other.order == null ? null : other.order.copy();
-        this.kanbanId = other.kanbanId == null ? null : other.kanbanId.copy();
+        this.klisttaskId = other.klisttaskId == null ? null : other.klisttaskId.copy();
     }
 
     @Override
@@ -91,19 +91,19 @@ public class TaskCriteria implements Serializable, Criteria {
         this.order = order;
     }
 
-    public LongFilter getKanbanId() {
-        return kanbanId;
+    public LongFilter getKlisttaskId() {
+        return klisttaskId;
     }
 
-    public LongFilter kanbanId() {
-        if (kanbanId == null) {
-            kanbanId = new LongFilter();
+    public LongFilter klisttaskId() {
+        if (klisttaskId == null) {
+            klisttaskId = new LongFilter();
         }
-        return kanbanId;
+        return klisttaskId;
     }
 
-    public void setKanbanId(LongFilter kanbanId) {
-        this.kanbanId = kanbanId;
+    public void setKlisttaskId(LongFilter klisttaskId) {
+        this.klisttaskId = klisttaskId;
     }
 
     @Override
@@ -119,13 +119,13 @@ public class TaskCriteria implements Serializable, Criteria {
             Objects.equals(id, that.id) &&
             Objects.equals(title, that.title) &&
             Objects.equals(order, that.order) &&
-            Objects.equals(kanbanId, that.kanbanId)
+            Objects.equals(klisttaskId, that.klisttaskId)
         );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, order, kanbanId);
+        return Objects.hash(id, title, order, klisttaskId);
     }
 
     // prettier-ignore
@@ -135,7 +135,7 @@ public class TaskCriteria implements Serializable, Criteria {
             (id != null ? "id=" + id + ", " : "") +
             (title != null ? "title=" + title + ", " : "") +
             (order != null ? "order=" + order + ", " : "") +
-            (kanbanId != null ? "kanbanId=" + kanbanId + ", " : "") +
+            (klisttaskId != null ? "klisttaskId=" + klisttaskId + ", " : "") +
             "}";
     }
 }

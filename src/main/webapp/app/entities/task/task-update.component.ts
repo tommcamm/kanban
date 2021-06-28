@@ -2,8 +2,8 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import { required, minLength, maxLength } from 'vuelidate/lib/validators';
 
-import KanbanService from '@/entities/kanban/kanban.service';
-import { IKanban } from '@/shared/model/kanban.model';
+import KlistService from '@/entities/klist/klist.service';
+import { IKlist } from '@/shared/model/klist.model';
 
 import { ITask, Task } from '@/shared/model/task.model';
 import TaskService from './task.service';
@@ -16,6 +16,9 @@ const validations: any = {
       maxLength: maxLength(40),
     },
     order: {},
+    klisttask: {
+      required,
+    },
   },
 };
 
@@ -26,9 +29,9 @@ export default class TaskUpdate extends Vue {
   @Inject('taskService') private taskService: () => TaskService;
   public task: ITask = new Task();
 
-  @Inject('kanbanService') private kanbanService: () => KanbanService;
+  @Inject('klistService') private klistService: () => KlistService;
 
-  public kanbans: IKanban[] = [];
+  public klists: IKlist[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -99,10 +102,10 @@ export default class TaskUpdate extends Vue {
   }
 
   public initRelationships(): void {
-    this.kanbanService()
+    this.klistService()
       .retrieve()
       .then(res => {
-        this.kanbans = res.data;
+        this.klists = res.data;
       });
   }
 }

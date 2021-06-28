@@ -92,10 +92,10 @@ public class TaskQueryService extends QueryService<Task> {
             if (criteria.getOrder() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getOrder(), Task_.order));
             }
-            if (criteria.getKanbanId() != null) {
+            if (criteria.getKlisttaskId() != null) {
                 specification =
                     specification.and(
-                        buildSpecification(criteria.getKanbanId(), root -> root.join(Task_.kanban, JoinType.LEFT).get(Kanban_.id))
+                        buildSpecification(criteria.getKlisttaskId(), root -> root.join(Task_.klisttask, JoinType.LEFT).get(Klist_.id))
                     );
             }
         }
