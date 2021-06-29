@@ -29,18 +29,15 @@
       <table class="table table-striped" aria-describedby="kanbans">
         <thead>
           <tr>
-            <th scope="row" v-on:click="changeOrder('id')">
-              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
-            </th>
             <th scope="row" v-on:click="changeOrder('name')">
-              <span>Name</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'name'"></jhi-sort-indicator>
+              <span>Nome</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'name'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('created_at')">
-              <span>Created At</span>
+              <span>Creato il</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'created_at'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('last_edit')">
-              <span>Last Edit</span>
+              <span>Ultima Modifica</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'last_edit'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
@@ -49,9 +46,8 @@
         <tbody>
           <tr v-for="kanban in kanbans" :key="kanban.id" data-cy="entityTable">
             <td>
-              <router-link :to="{ name: 'KanbanView', params: { kanbanId: kanban.id } }">{{ kanban.id }}</router-link>
+              <router-link :to="{ name: 'KanbanView', params: { kanbanId: kanban.id } }">{{ kanban.name }}</router-link>
             </td>
-            <td>{{ kanban.name }}</td>
             <td>{{ kanban.created_at }}</td>
             <td>{{ kanban.last_edit }}</td>
             <td class="text-right">
@@ -59,13 +55,13 @@
                 <router-link :to="{ name: 'KanbanView', params: { kanbanId: kanban.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline">View</span>
+                    <span class="d-none d-md-inline">Visualizza</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'KanbanEdit', params: { kanbanId: kanban.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Edit</span>
+                    <span class="d-none d-md-inline">Modifica</span>
                   </button>
                 </router-link>
                 <b-button
@@ -76,7 +72,7 @@
                   v-b-modal.removeEntity
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline">Delete</span>
+                  <span class="d-none d-md-inline">Elimina</span>
                 </b-button>
               </div>
             </td>
@@ -86,13 +82,13 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="kanbanApp.kanban.delete.question" data-cy="kanbanDeleteDialogHeading">Confirm delete operation</span></span
+        ><span id="kanbanApp.kanban.delete.question" data-cy="kanbanDeleteDialogHeading">Conferma Elminazione Kanban</span></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-kanban-heading">Are you sure you want to delete this Kanban?</p>
+        <p id="jhi-delete-kanban-heading">Sei sicuro di voler cancellare questo Kanban?</p>
       </div>
       <div slot="modal-footer">
-        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancel</button>
+        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Annulla</button>
         <button
           type="button"
           class="btn btn-primary"
@@ -100,7 +96,7 @@
           data-cy="entityConfirmDeleteButton"
           v-on:click="removeKanban()"
         >
-          Delete
+          Elimina
         </button>
       </div>
     </b-modal>

@@ -12,6 +12,7 @@ import KanbanService from './kanban.service';
 export default class Kanban extends Vue {
   @Inject('kanbanService') private kanbanService: () => KanbanService;
   private removeId: number = null;
+  private removeName: string = null;
   public itemsPerPage = 20;
   public queryCount: number = null;
   public page = 1;
@@ -61,6 +62,7 @@ export default class Kanban extends Vue {
 
   public prepareRemove(instance: IKanban): void {
     this.removeId = instance.id;
+    this.removeName = instance.name;
     if (<any>this.$refs.removeEntity) {
       (<any>this.$refs.removeEntity).show();
     }
@@ -70,7 +72,7 @@ export default class Kanban extends Vue {
     this.kanbanService()
       .delete(this.removeId)
       .then(() => {
-        const message = 'A Kanban is deleted with identifier ' + this.removeId;
+        const message = 'Il Kanban di nome ' + this.removeName + ' è stato eliminato';
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

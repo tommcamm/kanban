@@ -16,9 +16,7 @@ const validations: any = {
     },
     created_at: {},
     last_edit: {},
-    userkanban: {
-      required,
-    },
+    userkanban: {},
   },
 };
 
@@ -62,7 +60,7 @@ export default class KanbanUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Kanban is updated with identifier ' + param.id;
+          const message = 'Il Kanban di nome ' + param.name + ' è stato aggiornato';
           return this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -77,10 +75,10 @@ export default class KanbanUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Kanban is created with identifier ' + param.id;
+          const message = 'Un Kanban è stato creato con nome ' + param.name;
           this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
-            title: 'Success',
+            title: 'Successo',
             variant: 'success',
             solid: true,
             autoHideDelay: 5000,

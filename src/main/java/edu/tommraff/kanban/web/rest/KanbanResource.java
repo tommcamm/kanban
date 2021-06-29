@@ -3,11 +3,15 @@ package edu.tommraff.kanban.web.rest;
 import edu.tommraff.kanban.repository.KanbanRepository;
 import edu.tommraff.kanban.service.KanbanQueryService;
 import edu.tommraff.kanban.service.KanbanService;
+import edu.tommraff.kanban.service.UserService;
 import edu.tommraff.kanban.service.criteria.KanbanCriteria;
+import edu.tommraff.kanban.service.dto.AdminUserDTO;
 import edu.tommraff.kanban.service.dto.KanbanDTO;
+import edu.tommraff.kanban.service.dto.UserDTO;
 import edu.tommraff.kanban.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,6 +27,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import tech.jhipster.service.filter.LongFilter;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
@@ -33,6 +38,13 @@ import tech.jhipster.web.util.ResponseUtil;
 @RestController
 @RequestMapping("/api")
 public class KanbanResource {
+
+    private static class KanbanResourceException extends RuntimeException {
+
+        private KanbanResourceException(String message) {
+            super(message);
+        }
+    }
 
     private final Logger log = LoggerFactory.getLogger(KanbanResource.class);
 
@@ -47,10 +59,18 @@ public class KanbanResource {
 
     private final KanbanQueryService kanbanQueryService;
 
-    public KanbanResource(KanbanService kanbanService, KanbanRepository kanbanRepository, KanbanQueryService kanbanQueryService) {
+    private final UserService userService;
+
+    public KanbanResource(
+        KanbanService kanbanService,
+        KanbanRepository kanbanRepository,
+        KanbanQueryService kanbanQueryService,
+        UserService userService
+    ) {
         this.kanbanService = kanbanService;
         this.kanbanRepository = kanbanRepository;
         this.kanbanQueryService = kanbanQueryService;
+        this.userService = userService;
     }
 
     /**
@@ -66,6 +86,16 @@ public class KanbanResource {
         if (kanbanDTO.getId() != null) {
             throw new BadRequestAlertException("A new kanban cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        // We take from userService the current user, and create a kanban with his info
+        kanbanDTO.setUserkanban(
+            userService.getUserWithAuthorities().map(UserDTO::new).orElseThrow(() -> new KanbanResourceException("User could not be found"))
+        );
+
+        // We add a created at field and last edit
+        kanbanDTO.setCreated_at(LocalDate.now());
+        kanbanDTO.setLast_edit(LocalDate.now());
+
         KanbanDTO result = kanbanService.save(kanbanDTO);
         return ResponseEntity
             .created(new URI("/api/kanbans/" + result.getId()))
@@ -99,6 +129,8 @@ public class KanbanResource {
         if (!kanbanRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
+
+        kanbanDTO.setLast_edit(LocalDate.now());
 
         KanbanDTO result = kanbanService.save(kanbanDTO);
         return ResponseEntity
@@ -135,6 +167,8 @@ public class KanbanResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
+        kanbanDTO.setLast_edit(LocalDate.now());
+
         Optional<KanbanDTO> result = kanbanService.partialUpdate(kanbanDTO);
 
         return ResponseUtil.wrapOrNotFound(
@@ -144,7 +178,7 @@ public class KanbanResource {
     }
 
     /**
-     * {@code GET  /kanbans} : get all the kanbans.
+     * {@code GET  /kanbans} : get all the kanbans for the current user.
      *
      * @param pageable the pagination information.
      * @param criteria the criteria which the requested entities should match.
