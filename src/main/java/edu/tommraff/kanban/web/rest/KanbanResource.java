@@ -186,6 +186,12 @@ public class KanbanResource {
      */
     @GetMapping("/kanbans")
     public ResponseEntity<List<KanbanDTO>> getAllKanbans(KanbanCriteria criteria, Pageable pageable) {
+        // FIXME: Sistemare questa schifezza
+        Long longValue = userService.getUserWithAuthorities().get().getId();
+        LongFilter longFilter = new LongFilter();
+        longFilter.setEquals(longValue);
+        criteria.setUserkanbanId(longFilter);
+
         log.debug("REST request to get Kanbans by criteria: {}", criteria);
         Page<KanbanDTO> page = kanbanQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
