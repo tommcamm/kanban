@@ -51,9 +51,27 @@ public interface KanbanService {
     Optional<KanbanDTO> findOne(Long id);
 
     /**
+     * Get the "id" kanban owned by ownerId.
+     *
+     * @param id the id of the entity
+     * @param ownerId the id of the owner
+     * @return the entity
+     */
+    Optional<KanbanDTO> findOneOwned(Long id, Long ownerId);
+
+    /**
      * Delete the "id" kanban.
      *
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    /**
+     * Checks if the kanban is owned
+     *
+     * @param kanbanId id of the kanban entity
+     * @param ownerId id of the owner user
+     * @return true if is owned, false otherwise
+     */
+    boolean isOwned(Long kanbanId, Long ownerId);
 }

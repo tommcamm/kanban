@@ -78,8 +78,21 @@ public class KanbanServiceImpl implements KanbanService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Optional<KanbanDTO> findOneOwned(Long id, Long ownerId) {
+        log.debug("Request to get kanban : {}, of user : {}", id, ownerId);
+        return kanbanRepository.findByIdAndOwner(id, ownerId).map(kanbanMapper::toDto);
+    }
+
+    @Override
     public void delete(Long id) {
         log.debug("Request to delete Kanban : {}", id);
         kanbanRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean isOwned(Long kanbanId, Long ownerId) {
+        log.debug("Request to check ownership of kanban : {}, with owner : {}", kanbanId, ownerId);
+        return findOneOwned(kanbanId, ownerId).isPresent();
     }
 }

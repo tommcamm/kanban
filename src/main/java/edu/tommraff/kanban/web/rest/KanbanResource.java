@@ -223,8 +223,11 @@ public class KanbanResource {
      */
     @GetMapping("/kanbans/{id}")
     public ResponseEntity<KanbanDTO> getKanban(@PathVariable Long id) {
+        Long user = userService.getUserWithAuthorities().orElseThrow(() -> new KanbanResourceException("User not found")).getId();
+        if (!kanbanService.isOwned(id, user)) throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+
         log.debug("REST request to get Kanban : {}", id);
-        Optional<KanbanDTO> kanbanDTO = kanbanService.findOne(id);
+        Optional<KanbanDTO> kanbanDTO = kanbanService.findOneOwned(id, user);
         return ResponseUtil.wrapOrNotFound(kanbanDTO);
     }
 
@@ -236,6 +239,9 @@ public class KanbanResource {
      */
     @DeleteMapping("/kanbans/{id}")
     public ResponseEntity<Void> deleteKanban(@PathVariable Long id) {
+        Long user = userService.getUserWithAuthorities().orElseThrow(() -> new KanbanResourceException("User not found")).getId();
+        if (!kanbanService.isOwned(id, user)) throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+
         log.debug("REST request to delete Kanban : {}", id);
         kanbanService.delete(id);
         return ResponseEntity
