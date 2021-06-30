@@ -4,23 +4,21 @@
       <div class="col-md-8 toastify-container">
         <h2 v-if="account" id="password-title">
           <span>
-            Password for [<strong>{{ username }}</strong
+            Password per [<strong>{{ username }}</strong
             >]</span
           >
         </h2>
 
         <div class="alert alert-success" role="alert" v-if="success">
-          <strong>Password changed!</strong>
+          <strong>Password cambiata!</strong>
         </div>
-        <div class="alert alert-danger" role="alert" v-if="error">
-          <strong>An error has occurred!</strong> The password could not be changed.
-        </div>
+        <div class="alert alert-danger" role="alert" v-if="error"><strong>Errore!</strong> La password non può essere cambiata.</div>
 
-        <div class="alert alert-danger" role="alert" v-if="doNotMatch">The password and its confirmation do not match!</div>
+        <div class="alert alert-danger" role="alert" v-if="doNotMatch">La password e la sua conferma non coincidono!</div>
 
         <form name="form" role="form" id="password-form" v-on:submit.prevent="changePassword()">
           <div class="form-group">
-            <label class="form-control-label" for="currentPassword">Current password</label>
+            <label class="form-control-label" for="currentPassword">Password corrente</label>
             <input
               type="password"
               class="form-control"
@@ -32,11 +30,11 @@
               data-cy="currentPassword"
             />
             <div v-if="$v.resetPassword.currentPassword.$anyDirty && $v.resetPassword.currentPassword.$invalid">
-              <small class="form-text text-danger" v-if="!$v.resetPassword.currentPassword.required"> Your password is required. </small>
+              <small class="form-text text-danger" v-if="!$v.resetPassword.currentPassword.required"> La password è richiesta. </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="newPassword">New password</label>
+            <label class="form-control-label" for="newPassword">Nuova Password</label>
             <input
               type="password"
               class="form-control"
@@ -50,17 +48,17 @@
               data-cy="newPassword"
             />
             <div v-if="$v.resetPassword.newPassword.$anyDirty && $v.resetPassword.newPassword.$invalid">
-              <small class="form-text text-danger" v-if="!$v.resetPassword.newPassword.required"> Your password is required. </small>
+              <small class="form-text text-danger" v-if="!$v.resetPassword.newPassword.required"> La password è richiesta. </small>
               <small class="form-text text-danger" v-if="!$v.resetPassword.newPassword.minLength">
-                Your password is required to be at least 4 characters.
+                La Password deve essere almeno lunga 4 caratteri
               </small>
               <small class="form-text text-danger" v-if="!$v.resetPassword.newPassword.maxLength">
-                Your password cannot be longer than 50 characters.
+                La Password non può superare i 50 caratteri.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="confirmPassword">New password confirmation</label>
+            <label class="form-control-label" for="confirmPassword">Conferma nuova password</label>
             <input
               type="password"
               class="form-control"
@@ -75,12 +73,12 @@
             />
             <div v-if="$v.resetPassword.confirmPassword.$anyDirty && $v.resetPassword.confirmPassword.$invalid">
               <small class="form-text text-danger" v-if="!$v.resetAccount.confirmPassword.sameAsPassword">
-                The password and its confirmation do not match!
+                La password e la sua conferma non coincidono!
               </small>
             </div>
           </div>
 
-          <button type="submit" :disabled="$v.resetPassword.$invalid" class="btn btn-primary" data-cy="submit">Save</button>
+          <button type="submit" :disabled="$v.resetPassword.$invalid" class="btn btn-primary" data-cy="submit">Salva</button>
         </form>
       </div>
     </div>

@@ -2,14 +2,14 @@
   <div>
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <h1>Reset your password</h1>
+        <h1>Reimposta la tua password</h1>
 
         <div class="alert alert-warning" v-if="!success">
-          <p>Enter the email address you used to register.</p>
+          <p>Inserisci la email con cui ti sei registrato.</p>
         </div>
 
         <div class="alert alert-success" v-if="success">
-          <p>Check your emails for details on how to reset your password.</p>
+          <p>Controlla la tua email per vedere i dettagli su come resettare la tua password.</p>
         </div>
 
         <form v-if="!success" name="form" role="form" v-on:submit.prevent="requestReset()">
@@ -31,11 +31,9 @@
             <div v-if="$v.resetAccount.email.$anyDirty && $v.resetAccount.email.$invalid">
               <small class="form-text text-danger" v-if="!$v.resetAccount.email.required"> Your email is required. </small>
               <small class="form-text text-danger" v-if="!$v.resetAccount.email.email"> Your email is invalid. </small>
-              <small class="form-text text-danger" v-if="!$v.resetAccount.email.minLength">
-                Your email is required to be at least 5 characters.
-              </small>
+              <small class="form-text text-danger" v-if="!$v.resetAccount.email.minLength"> La email deve avere almeno 5 caratteri. </small>
               <small class="form-text text-danger" v-if="!$v.resetAccount.email.maxLength">
-                Your email cannot be longer than 100 characters.
+                La email non può superare i 100 caratteri.
               </small>
             </div>
           </div>

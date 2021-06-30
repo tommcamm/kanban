@@ -2,32 +2,32 @@
   <div>
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <h1>Reset your password</h1>
+        <h1>Reimposta la tua password</h1>
 
         <div class="alert alert-danger" v-if="keyMissing">
-          <strong>The password reset key is missing.</strong>
+          <strong>La chiave di reset password è mancante.</strong>
         </div>
 
         <div class="alert alert-danger" v-if="error">
-          <p>Your password couldn't be reset. Remember a password request is only valid for 24 hours.</p>
+          <p>La tua password non può essere resettata. Ricorda una richiesta di reset è valida solo per 24 ore.</p>
         </div>
 
         <div class="alert alert-success" v-if="success">
-          <span><strong>Your password had been reset.</strong> Please </span>
-          <a class="alert-link" v-on:click="openLogin">sign in</a>
+          <span><strong>La password è stata cambiata.</strong> Perfavore effettua il </span>
+          <a class="alert-link" v-on:click="openLogin">login</a>
         </div>
         <div class="alert alert-danger" v-if="doNotMatch">
-          <p>The password and its confirmation do not match!</p>
+          <p>La password e la sua conferma non coincidono!</p>
         </div>
 
         <div class="alert alert-warning" v-if="!success && !keyMissing">
-          <p>Choose a new password.</p>
+          <p>Scegli una nuova password.</p>
         </div>
 
         <div v-if="!keyMissing">
           <form v-if="!success" name="form" role="form" v-on:submit.prevent="finishReset()">
             <div class="form-group">
-              <label class="form-control-label" for="newPassword">New password</label>
+              <label class="form-control-label" for="newPassword">Nuova password</label>
               <input
                 type="password"
                 class="form-control"
@@ -43,15 +43,15 @@
               <div v-if="$v.resetAccount.newPassword.$anyDirty && $v.resetAccount.newPassword.$invalid">
                 <small class="form-text text-danger" v-if="!$v.resetAccount.newPassword.required"> Your password is required. </small>
                 <small class="form-text text-danger" v-if="!$v.resetAccount.newPassword.minLength">
-                  Your password is required to be at least 4 characters.
+                  La password deve avere almeno 4 caratteri.
                 </small>
                 <small class="form-text text-danger" v-if="!$v.resetAccount.newPassword.maxLength">
-                  Your password cannot be longer than 50 characters.
+                  La password non può superare i 50 caratteri.
                 </small>
               </div>
             </div>
             <div class="form-group">
-              <label class="form-control-label" for="confirmPassword">New password confirmation</label>
+              <label class="form-control-label" for="confirmPassword">Conferma nuova password</label>
               <input
                 type="password"
                 class="form-control"
@@ -66,11 +66,11 @@
               />
               <div v-if="$v.resetAccount.confirmPassword.$anyDirty && $v.resetAccount.confirmPassword.$invalid">
                 <small class="form-text text-danger" v-if="!$v.resetAccount.confirmPassword.sameAsPassword">
-                  The password and its confirmation do not match!
+                  La password e la sua conferma non coincidono!
                 </small>
               </div>
             </div>
-            <button type="submit" :disabled="$v.resetAccount.$invalid" class="btn btn-primary" data-cy="submit">Save</button>
+            <button type="submit" :disabled="$v.resetAccount.$invalid" class="btn btn-primary" data-cy="submit">Salva</button>
           </form>
         </div>
       </div>
