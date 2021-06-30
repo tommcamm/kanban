@@ -13,10 +13,10 @@
         </div>
 
         <div class="alert alert-warning" v-if="!authenticated">
-          <span>If you want to </span>
-          <a class="alert-link" v-on:click="openLogin()">sign in</a
+          <span>Se vuoi </span>
+          <a class="alert-link" v-on:click="openLogin()">autenticarti</a
           ><span
-            >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
+            >, puoi provare gli account di default:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
             password="user").</span
           >
         </div>
