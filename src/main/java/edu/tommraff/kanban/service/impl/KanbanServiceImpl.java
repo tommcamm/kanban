@@ -65,6 +65,13 @@ public class KanbanServiceImpl implements KanbanService {
 
     @Override
     @Transactional(readOnly = true)
+    public Page<KanbanDTO> findAllOwned(long id, Pageable pageable) {
+        log.debug("Requested all kanbans owned by id: {}", id);
+        return kanbanRepository.findByOwnedKanban(id, pageable).map(kanbanMapper::toDto);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Optional<KanbanDTO> findOne(Long id) {
         log.debug("Request to get Kanban : {}", id);
         return kanbanRepository.findById(id).map(kanbanMapper::toDto);

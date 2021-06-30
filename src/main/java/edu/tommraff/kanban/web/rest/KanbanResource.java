@@ -186,14 +186,14 @@ public class KanbanResource {
      */
     @GetMapping("/kanbans")
     public ResponseEntity<List<KanbanDTO>> getAllKanbans(KanbanCriteria criteria, Pageable pageable) {
-        // FIXME: Sistemare questa schifezza
-        Long longValue = userService.getUserWithAuthorities().get().getId();
-        LongFilter longFilter = new LongFilter();
-        longFilter.setEquals(longValue);
-        criteria.setUserkanbanId(longFilter);
+        Long user = userService.getUserWithAuthorities().orElseThrow(() -> new KanbanResourceException("User not found")).getId();
+        LongFilter userFilter = new LongFilter();
+        userFilter.setEquals(user);
+        criteria.setUserkanbanId(userFilter);
 
         log.debug("REST request to get Kanbans by criteria: {}", criteria);
         Page<KanbanDTO> page = kanbanQueryService.findByCriteria(criteria, pageable);
+
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -206,6 +206,11 @@ public class KanbanResource {
      */
     @GetMapping("/kanbans/count")
     public ResponseEntity<Long> countKanbans(KanbanCriteria criteria) {
+        Long user = userService.getUserWithAuthorities().orElseThrow(() -> new KanbanResourceException("User not found")).getId();
+        LongFilter userFilter = new LongFilter();
+        userFilter.setEquals(user);
+        criteria.setUserkanbanId(userFilter);
+
         log.debug("REST request to count Kanbans by criteria: {}", criteria);
         return ResponseEntity.ok().body(kanbanQueryService.countByCriteria(criteria));
     }

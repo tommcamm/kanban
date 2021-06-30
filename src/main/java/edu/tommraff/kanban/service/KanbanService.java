@@ -34,6 +34,15 @@ public interface KanbanService {
     Page<KanbanDTO> findAll(Pageable pageable);
 
     /**
+     * Get all the kanbans from a owner id.
+     *
+     * @param pageable the pagination information.
+     * @param id the id of the owner
+     * @return the list of entities owned by provided id.
+     */
+    Page<KanbanDTO> findAllOwned(long id, Pageable pageable);
+
+    /**
      * Get the "id" kanban.
      *
      * @param id the id of the entity.
