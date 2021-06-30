@@ -1,5 +1,5 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
-
+//import  $  from 'jquery';
 import { IKanban } from '@/shared/model/kanban.model';
 import KanbanService from './kanban.service';
 
